@@ -209,7 +209,7 @@ app.controller('AuthCtrl', [
 		};
 }]);
 
-app..controller('NavCtrl', [
+app.controller('NavCtrl', [
 	'$scope',
 	'auth',
 	function($scope, auth){

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var User = mongoose.model('User');
+
 var jwt = require('express-jwt');
 var auth = jwt({secret: process.env.SECRET, userProperty: 'payload'});
 
@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
 var mongoose = require('mongoose');
 var Post = mongoose.model('Post');
 var Comment = mongoose.model('Comment');
+var User = mongoose.model('User');
 
 router.get('/posts', function(req, res, next) {
   Post.find(function(err, posts){
@@ -110,7 +111,7 @@ router.post('/register', function(req, res, next){
 
 router.post('/login', function(req,res,next){
 	if(!req.bodu.username || !req.body.password){
-		resturn res.status(400).json({message: 'Please fill out all fields'});
+		return res.status(400).json({message: 'Please fill out all fields'});
 	}
 
 	passport.authenticate('local', function(err,user,info){
