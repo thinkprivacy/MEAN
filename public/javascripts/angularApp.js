@@ -63,7 +63,7 @@ app.factory('posts', ['$http', function($http){
 	};
 
 	o.upvoteComment = function(post, comment) {
-		return $http.put('/posts/' + post._id + '/comments/'+ comment._id + '/upvote')
+		return $http.put('/posts/' + post._id + '/comments/' + comment._id + '/upvote')
 			.success(function(data){
 				comment.upvotes += 1;
 		});
